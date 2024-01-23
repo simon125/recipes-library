@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from "react";
+import { Routes, Route } from "react-router-dom";
+import { Navigation } from "./components/layout/Navigation";
+import { Home } from "./pages/Home/Home";
+import { Recipes } from "./pages/Recipes/Recipes";
+import { RecipeDetails } from "./pages/RecipeDetails/RecipeDetails";
+import { About } from "./pages/About/About";
 
-function App() {
+export const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navigation />
+      <main className="container" style={{ marginTop: "10vh" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/recipes" element={<Recipes />} />
+          <Route path="/recipes/:id" element={<RecipeDetails />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </main>
+    </>
   );
-}
-
-export default App;
+};
